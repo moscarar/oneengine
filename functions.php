@@ -491,6 +491,11 @@ class OneEngine{
 		<style type="text/css">
 			input.input-custom-field{width: 300px;width: 300px;margin-bottom: 15px;margin-top: 15px;}label.team-lbl{display:inline-block;min-width: 70px;}
 		</style>
+
+		<label class="team-lbl" for="oe_team_li"><?php _e('Linkedin:', 'oneengine') ?></label>
+		<input type="url" class="input-custom-field" name="oe_team_li" id="oe_team_li" placeholder="http://" value="<?php echo get_post_meta($post->ID, 'oe_team_li', true) ?>"><br>
+
+
 		<?php
 	}
 	public function save_meta_boxes($post_id){
@@ -518,6 +523,8 @@ class OneEngine{
 				update_post_meta( $post_id, 'oe_team_db', $_POST['oe_team_db'] ); 			
 	        if(isset($_POST['oe_team_gplus']))
 				update_post_meta( $post_id, 'oe_team_gplus', $_POST['oe_team_gplus'] ); 
+	        if(isset($_POST['oe_team_li']))
+				update_post_meta( $post_id, 'oe_team_li', $_POST['oe_team_li'] );
 
 		} 
 		if ( get_post_type( $post_id ) ==  'slider' ){
@@ -574,6 +581,7 @@ class OneEngine{
 		$fb_share 		= '';
 		$google_share 	= '';
 		$btn_get 		= '';
+		$linkedin_share 	= '';
 		
 		if( $get_in_touch == 1 || $get_in_touch == true ) $btn_get = '<a href="'.$get_in_touch_link.'" class="btn get-in-touch">'.__('Get In Touch').'</a>';
 		
@@ -593,7 +601,11 @@ class OneEngine{
 			if ( $key == 'google_plus' && $value ) {
 				$google_share = '<li><a class="sb-google" href="https://plus.google.com/share?url='.home_url().'" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=500\');return false;"><i class="fa fa-google-plus"></i></a></li>';
 			}
-			
+			// Linkedin
+			if ( $key == 'linkedin' && $value ) {
+				$linkedin_share = '<li><a class="sb-linkedin" href="http://twitter.com/share?url='.home_url().'/#portfolio-page&amp;lang=en&amp;text=Check%20out%20this%20awesome%20project:&amp;" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=620\');return false;" data-count="none" data-via=" "><i class="fa fa-linkedin"></i></a></li>';	
+			}	
+	
 		}
 		
 		$html = '<div class="mask-color-port">

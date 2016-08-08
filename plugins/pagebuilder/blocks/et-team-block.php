@@ -201,6 +201,9 @@ class OE_Team_Block extends AQ_Block {
                             <?php if(get_post_meta( $post->ID, 'oe_team_gplus', true )){ ?>
                             <li><a target="_blank" href="<?php echo get_post_meta( $post->ID, 'oe_team_gplus', true ); ?>"><i class="fa fa-google-plus"></i></a></li>
                             <?php } ?>
+                            <?php if(get_post_meta( $post->ID, 'oe_team_li', true )){ ?>
+                            <li><a target="_blank" href="<?php echo get_post_meta( $post->ID, 'oe_team_li', true ); ?>"><i class="fa fa-linkedin"></i></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
